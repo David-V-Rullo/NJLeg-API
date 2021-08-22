@@ -1,17 +1,20 @@
 const express = require('express')
-const sequelize = require('./config/connection').default
+const sequelize = require('./config/connection')
 const routes = require('./routes')
 
 const app = express()
 const PORT = process.env.PORT || 3000
 
+app.get('/', (req, res) => {
+    res.json('hello')
+})
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(routes)
 
 
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
   });
 

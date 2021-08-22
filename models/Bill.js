@@ -1,12 +1,12 @@
-const { Model, DataTypes } = require('sequelize')
-const db = require('../config/connection').default
+const { Model, DataTypes, Sequelize } = require('sequelize')
+const sequelize = require('../config/connection')
 
 class Bill extends Model {}
 
 Bill.init({}, {
     modelName: 'bill',
     tableName: 'mainbill',
-    sequelize,
+    sequelize
 })
 
 module.exports = Bill
